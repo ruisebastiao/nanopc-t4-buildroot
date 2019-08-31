@@ -1,0 +1,27 @@
+menuconfig BR2_PACKAGE_ROCKCHIP
+	bool "rockchip BSP packages"
+	select BR2_PACKAGE_HOST_E2FSPROGS
+	select BR2_PACKAGE_HOST_NTFS_3G
+
+if BR2_PACKAGE_ROCKCHIP
+choice
+	default BR2_PACKAGE_RK3399
+	prompt "rockchip chip support"
+
+
+config BR2_PACKAGE_RK3399
+    bool "rk3399 chip"
+    help
+        Use rockchip's rk3399 chip
+endchoice
+
+
+#source "$BR2_EXTERNAL_DFIT_PATH/package/rockchip/uboot-rockchip/Config.in"
+
+
+# Shared packages with all chips
+
+source "$BR2_EXTERNAL_DFIT_PATH/package/rockchip/rockchiplibmali/Config.in"
+source "$BR2_EXTERNAL_DFIT_PATH/package/rockchip/sd-fuse-rk3399/Config.in"
+
+endif

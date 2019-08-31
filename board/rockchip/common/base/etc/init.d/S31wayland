@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# Do some initialzation for Rockchip Linux SDK....
+#
+
+case "$1" in
+start)
+	echo "Starting wayland-weston"
+	source /etc/xdg/weston/wayland-env.sh
+    weston --tty=2&
+	;;
+stop)
+	;;
+*)
+	echo "Usage: $0 {start|stop}"
+	exit 1
+esac
+
+exit 0

@@ -1,0 +1,7 @@
+
+menu "Rockchip"
+
+	source "$BR2_EXTERNAL_NANOPCT4_PATH/package/rockchip/Config.in"
+	
+endmenu
+

@@ -1,0 +1,9 @@
+config BR2_PACKAGE_ROCKCHIPLIBMALI
+	bool "rockchip libmali"
+	depends on BR2_TOOLCHAIN_USES_GLIBC
+	
+	help
+	  Install the binary user-space library for the ARM Mali GPU.
+	  This package requires a kernel with the ARM Mali GPU Kernel
+	  Drivers enabled.
+
