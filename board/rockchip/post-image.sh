@@ -11,7 +11,6 @@ echo "Preparing files to fuse dir"
 # setup the image creation software
 cp ${BOARD_DIR}/parameter.txt ${BINARIES_DIR}/sd-fuse-rk3399/buildroot
 cp ${BOARD_DIR}/boot.img ${BINARIES_DIR}/sd-fuse-rk3399/buildroot
-ln -sf ${BINARIES_DIR}/uboot.img ${BINARIES_DIR}/sd-fuse-rk3399/buildroot
 ln -sf ${BINARIES_DIR}/rootfs.ext2 ${BINARIES_DIR}/sd-fuse-rk3399/buildroot/rootfs.img
 
 echo "Creating SD Card image"
@@ -25,7 +24,7 @@ echo "Creating EFlasher SD Card image"
 
 ./mk-emmc-image.sh buildroot
 
-echo "Creating Firmware image (OTA)"
+#echo "Creating Firmware image (OTA)"
 
 # echo "Creating the params.bin file"
 # PARAMS_NAME=${BINARIES_DIR}/params.bin
