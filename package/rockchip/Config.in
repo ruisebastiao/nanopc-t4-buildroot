@@ -16,12 +16,7 @@ config BR2_PACKAGE_RK3399
 endchoice
 
 
-#source "$BR2_EXTERNAL_DFIT_PATH/package/rockchip/uboot-rockchip/Config.in"
-
-
-# Shared packages with all chips
-
-source "$BR2_EXTERNAL_DFIT_PATH/package/rockchip/rockchiplibmali/Config.in"
-source "$BR2_EXTERNAL_DFIT_PATH/package/rockchip/sd-fuse-rk3399/Config.in"
+source "$BR2_EXTERNAL_NANOPCT4_PATH/package/rockchip/rockchiplibmali/Config.in"
+source "$BR2_EXTERNAL_NANOPCT4_PATH/package/rockchip/sd-fuse-rk3399/Config.in"
 
 endif
