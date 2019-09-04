@@ -3,6 +3,7 @@ config BR2_PACKAGE_ROCKCHIPLIBMALI
 	depends on BR2_TOOLCHAIN_USES_GLIBC
 	select BR2_PACKAGE_HAS_LIBEGL
 	select BR2_PACKAGE_HAS_LIBGLES
+	select BR2_PACKAGE_HAS_LIBEGL_WAYLAND
 	select BR2_PACKAGE_HAS_LIBGBM
 	help
 	  Install the binary user-space library for the ARM Mali GPU.
@@ -19,6 +20,6 @@ if BR2_PACKAGE_ROCKCHIPLIBMALI
 
     config BR2_PACKAGE_PROVIDES_LIBGBM
         default "rockchiplibmali"
-
+  
 
 endif
