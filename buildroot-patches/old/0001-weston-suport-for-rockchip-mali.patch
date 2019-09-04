@@ -1,0 +1,20 @@
+diff --git a/package/weston/Config.in b/package/weston/Config.in
+index f874b0cc6a..eec9c6a3f5 100644
+--- a/package/weston/Config.in
++++ b/package/weston/Config.in
+@@ -39,12 +39,12 @@ config BR2_PACKAGE_WESTON_HAS_COMPOSITOR
+ 
+ config BR2_PACKAGE_WESTON_DRM
+ 	bool "DRM compositor"
+-	depends on BR2_PACKAGE_MESA3D_OPENGL_EGL
++	depends on BR2_PACKAGE_MESA3D_OPENGL_EGL || BR2_PACKAGE_ROCKCHIPLIBMALI
+ 	select BR2_PACKAGE_WESTON_HAS_COMPOSITOR
+ 
+ # Uses libgbm from mesa3d
+-comment "DRM compositor needs an OpenGL EGL backend provided by mesa3d"
+-	depends on !BR2_PACKAGE_MESA3D_OPENGL_EGL
++comment "DRM compositor needs an OpenGL EGL backend provided by mesa3d or by rockchip mali"
++	depends on !BR2_PACKAGE_MESA3D_OPENGL_EGL && !BR2_PACKAGE_ROCKCHIPLIBMALI
+ 
+ config BR2_PACKAGE_WESTON_FBDEV
+ 	bool "fbdev compositor"

@@ -1,0 +1,36 @@
+diff --git a/package/opengl/Config.in b/package/opengl/Config.in
+index cbc001427d..cfa51def45 100644
+--- a/package/opengl/Config.in
++++ b/package/opengl/Config.in
+@@ -1,5 +1,6 @@
+ source "package/opengl/libgl/Config.in"
+ source "package/opengl/libegl/Config.in"
++source "package/opengl/libgbm/Config.in"
+ source "package/opengl/libgles/Config.in"
+ source "package/opengl/libopencl/Config.in"
+ source "package/opengl/libopenvg/Config.in"
+diff --git a/package/opengl/libgbm/Config.in b/package/opengl/libgbm/Config.in
+new file mode 100644
+index 0000000000..ee18c4e6cb
+--- /dev/null
++++ b/package/opengl/libgbm/Config.in
+@@ -0,0 +1,6 @@
++config BR2_PACKAGE_HAS_LIBGBM
++	bool
++
++config BR2_PACKAGE_PROVIDES_LIBGBM
++	string
++	depends on BR2_PACKAGE_HAS_LIBGBM
+diff --git a/package/opengl/libgbm/libgbm.mk b/package/opengl/libgbm/libgbm.mk
+new file mode 100644
+index 0000000000..5b3d8262a5
+--- /dev/null
++++ b/package/opengl/libgbm/libgbm.mk
+@@ -0,0 +1,7 @@
++################################################################################
++#
++# libgbm
++#
++################################################################################
++
++$(eval $(virtual-package))

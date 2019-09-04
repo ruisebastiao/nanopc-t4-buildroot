@@ -1,0 +1,37 @@
+diff --git a/package/libdrm/Config.in b/package/libdrm/Config.in
+index 3cb0e02a41..507ea4529d 100644
+--- a/package/libdrm/Config.in
++++ b/package/libdrm/Config.in
+@@ -98,6 +98,15 @@ config BR2_PACKAGE_LIBDRM_VC4
+ 	help
+ 	  Install vc4 (Raspberry Pi) driver.
+ 
++config BR2_PACKAGE_LIBDRM_ROCKCHIP
++	bool "rockchip"
++	depends on BR2_aarch64 || BR2_arm
++	depends on BR2_PACKAGE_LIBDRM_HAS_ATOMIC
++	select BR2_PACKAGE_LIBDRM_ENABLE_ATOMIC
++	default y if BR2_PACKAGE_ROCKCHIP
++	help
++	  Install rockchip driver.
++
+ config BR2_PACKAGE_LIBDRM_INSTALL_TESTS
+ 	bool "Install test programs"
+ 	help
+diff --git a/package/libdrm/libdrm.mk b/package/libdrm/libdrm.mk
+index 64fa5c4925..e39565e770 100644
+--- a/package/libdrm/libdrm.mk
++++ b/package/libdrm/libdrm.mk
+@@ -106,6 +106,12 @@ else
+ LIBDRM_CONF_OPTS += -Dvalgrind=false
+ endif
+ 
++ifeq ($(BR2_PACKAGE_LIBDRM_ROCKCHIP),y)
++LIBDRM_CONF_OPTS += --enable-rockchip-experimental-api
++else
++LIBDRM_CONF_OPTS += --disable-rockchip-experimental-api
++endif
++
+ ifeq ($(BR2_PACKAGE_LIBDRM_INSTALL_TESTS),y)
+ LIBDRM_CONF_OPTS += -Dinstall-test-programs=true
+ ifeq ($(BR2_PACKAGE_CUNIT),y)
