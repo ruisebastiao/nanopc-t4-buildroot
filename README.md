@@ -24,7 +24,7 @@ sudo apt-get install -y patch texinfo wget git gawk curl lzma bc quilt
 ```
 mkdir output
 cd output
-make -C "../buildroot" O="$(pwd)" BR2_EXTERNAL="$(pwd)"/../nanopc-t4-buildroot/ rockchip_rk3399_defconfig
+make -C "../buildroot" O="$(pwd)" BR2_EXTERNAL="$(pwd)"/../nanopc-t4-buildroot/ nanopct4_defconfig
 
 ```
 
