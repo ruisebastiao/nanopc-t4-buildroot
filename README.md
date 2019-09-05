@@ -29,7 +29,8 @@ make -C "../buildroot" O="$(pwd)" BR2_EXTERNAL="$(pwd)"/../nanopc-t4-buildroot/ 
 ```
 
 # Output
-
+```
 images/sd-fuse-rk3399/buildroot -> all images for use with upgrade_tool
 images/sd-fuse-rk3399/out -> images to flash in sdcard: rk3399-eflasher-* for flashing emmc / rk3399-sd-buildroot-* for boot from sdcard
+```
 
