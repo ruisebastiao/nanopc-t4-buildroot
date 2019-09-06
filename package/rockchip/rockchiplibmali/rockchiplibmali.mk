@@ -42,22 +42,22 @@ define ROCKCHIPLIBMALI_RM_SO_STAGING
 endef
 
 define ROCKCHIPLIBMALI_SET_SO_STAGING
-	cp libmali-midgard-t86x-r14p0-wayland.so libmali.so && \
+	cp libmali-midgard-t86x-r14p0-gbm.so libmali.so && \
 	ln -s libmali.so libMali.so && \
 	patchelf --set-soname libmali.so libmali.so && \
-	cp libmali-midgard-t86x-r14p0-wayland.so libEGL.so && \
+	cp libmali-midgard-t86x-r14p0-gbm.so libEGL.so && \
 	patchelf --set-soname libEGL.so libEGL.so && \
 	ln -s libEGL.so libEGL.so.1 && \
 	patchelf --set-soname libgbm.so.1.0.0 libgbm.so.1.0.0 && \
 	ln -s libgbm.so.1.0.0 libgbm.so && \
 	ln -s libgbm.so.1.0.0 libgbm.so.1 && \
-	cp libmali-midgard-t86x-r14p0-wayland.so libGLESv1_CM.so && \
+	cp libmali-midgard-t86x-r14p0-gbm.so libGLESv1_CM.so && \
 	patchelf --set-soname libGLESv1_CM.so libGLESv1_CM.so && \
 	ln -s libGLESv1_CM.so libGLESv1_CM.so.1 && \
-	cp libmali-midgard-t86x-r14p0-wayland.so libGLESv2.so && \
+	cp libmali-midgard-t86x-r14p0-gbm.so libGLESv2.so && \
 	patchelf --set-soname libGLESv2.so libGLESv2.so && \
 	ln -s libGLESv2.so libGLESv2.so.2 && \
-	cp libmali-midgard-t86x-r14p0-wayland.so libwayland-egl.so&& \
+	cp libmali-midgard-t86x-r14p0-gbm.so libwayland-egl.so&& \
 	patchelf --set-soname libwayland-egl.so libwayland-egl.so && \
 	ln -s libwayland-egl.so libwayland-egl.so.1
 endef
@@ -95,13 +95,13 @@ define ROCKCHIPLIBMALI_INSTALL_TARGET_CMDS
  	rm -f $(ROCKCHIPLIBMALI_RM_SO_STAGING)
 
 # 	
- 	$(INSTALL) -D -m 644 $(@D)/lib/aarch64-linux-gnu/libmali-midgard-t86x-r14p0-wayland.so $(STAGING_DIR)/usr/lib/
+ 	$(INSTALL) -D -m 644 $(@D)/lib/aarch64-linux-gnu/libmali-midgard-t86x-r14p0-gbm.so $(STAGING_DIR)/usr/lib/
  	 	
  	
-	$(INSTALL) -D -m 644 $(@D)/lib/aarch64-linux-gnu/libmali-midgard-t86x-r14p0-wayland.so $(TARGET_DIR)/usr/lib/
+	$(INSTALL) -D -m 644 $(@D)/lib/aarch64-linux-gnu/libmali-midgard-t86x-r14p0-gbm.so $(TARGET_DIR)/usr/lib/
 
 	
-	$(TARGET_CC) -O2 -pipe -Wall -Werror -fPIC -I$(STAGING_DIR)/usr/include/libdrm -shared -L$(STAGING_DIR)/usr/lib/ -lmali-midgard-t86x-r14p0-wayland  $(@D)/src/gbm-wrapper.c -o $(@D)/lib/libgbm.so.1.0.0
+	$(TARGET_CC) -O2 -pipe -Wall -Werror -fPIC -I$(STAGING_DIR)/usr/include/libdrm -shared -L$(STAGING_DIR)/usr/lib/ -lmali-midgard-t86x-r14p0-gbm  $(@D)/src/gbm-wrapper.c -o $(@D)/lib/libgbm.so.1.0.0
 	
 	$(INSTALL) -D -m 644 $(@D)/lib/libgbm.so.1.0.0 $(STAGING_DIR)/usr/lib/
 	
@@ -110,7 +110,7 @@ define ROCKCHIPLIBMALI_INSTALL_TARGET_CMDS
 	
 	
 	cd $(STAGING_DIR)/usr/lib/ && $(ROCKCHIPLIBMALI_SET_SO_STAGING) && cd -
-	cd $(TARGET_DIR)/usr/lib/ && ln -s libmali-midgard-t86x-r14p0-wayland.so libmali.so && $(ROCKCHIPLIBMALI_LINK_SO) && $(ROCKCHIPLIBMALI_LINK_OPENCL_SO) && cd -
+	cd $(TARGET_DIR)/usr/lib/ && ln -s libmali-midgard-t86x-r14p0-gbm.so libmali.so && $(ROCKCHIPLIBMALI_LINK_SO) && $(ROCKCHIPLIBMALI_LINK_OPENCL_SO) && cd -
 
 	
 endef
