@@ -1,0 +1,33 @@
+diff --git a/package/qt5/qt5base/qt5base.mk b/package/qt5/qt5base/qt5base.mk
+index e4aa76908a..640089422e 100644
+--- a/package/qt5/qt5base/qt5base.mk
++++ b/package/qt5/qt5base/qt5base.mk
+@@ -74,6 +74,10 @@ else
+ QT5BASE_CONFIGURE_OPTS += -no-kms
+ endif
+ 
++# Uses libgbm from rockchip-mali
++ifeq ($(BR2_PACKAGE_ROCKCHIPLIBMALI),y)
++       QT5BASE_CONFIGURE_OPTS += -gbm
++else
+ # Uses libgbm from mesa3d
+ ifeq ($(BR2_PACKAGE_MESA3D_OPENGL_EGL),y)
+ QT5BASE_CONFIGURE_OPTS += -gbm
+@@ -81,6 +85,7 @@ QT5BASE_DEPENDENCIES += mesa3d
+ else
+ QT5BASE_CONFIGURE_OPTS += -no-gbm
+ endif
++endif
+ 
+ ifeq ($(BR2_ENABLE_DEBUG),y)
+ QT5BASE_CONFIGURE_OPTS += -debug
+@@ -289,6 +294,9 @@ QT5BASE_INSTALL_LIBS_$(BR2_PACKAGE_QT5BASE_EGLFS)      += Qt5EglFSDeviceIntegrat
+ ifeq ($(BR2_PACKAGE_MESA3D_OPENGL_EGL),y)
+ QT5BASE_INSTALL_LIBS_$(BR2_PACKAGE_QT5BASE_EGLFS)      += Qt5EglFsKmsSupport
+ endif
++ifeq ($(BR2_PACKAGE_ROCKCHIPLIBMALI),y)
++QT5BASE_INSTALL_LIBS_$(BR2_PACKAGE_QT5BASE_EGLFS)      += Qt5EglFsKmsSupport
++endif
+ else
+ QT5BASE_INSTALL_LIBS_$(BR2_PACKAGE_QT5BASE_EGLFS)      += Qt5EglDeviceIntegration
+ endif
